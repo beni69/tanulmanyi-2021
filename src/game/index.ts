@@ -28,6 +28,8 @@ k.keyPress("up", () => player.jump());
 k.keyPress("space", () => player.jump());
 k.keyDown("right", () => player.move(MOVE_SPEED, 0));
 k.keyDown("left", () => player.move(-MOVE_SPEED, 0));
+k.keyPress("down", () => (player.weight = 3));
+k.keyRelease("down", () => (player.weight = 1));
 
 // move input focus to the game
 k.focus();

@@ -6,7 +6,10 @@ module.exports = {
     mount: {
         src: { url: "/" },
     },
-    plugins: [["@snowpack/plugin-typescript", { tsc: "tsc" }]],
+    plugins: [
+        ["@snowpack/plugin-typescript", { tsc: "tsc" }],
+        ["@snowpack/plugin-postcss"],
+    ],
     packageOptions: {
         /* ... */
     },

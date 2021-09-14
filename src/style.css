@@ -1,5 +1,13 @@
 * {
     margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Press Start 2P", cursive;
+
+    overflow: hidden;
+    background: #141414;
 }
 
 main {
@@ -14,8 +22,6 @@ main {
 }
 
 .btn-grad {
-    font-family: "Press Start 2P", cursive;
-
     background-image: linear-gradient(
         to right,
         #fc354c 0%,
@@ -30,13 +36,60 @@ main {
     transition: 0.5s;
     background-size: 200% auto;
     color: white;
-    box-shadow: 0 0 20px #eee;
+    box-shadow: 0 0 20px #0abfbc;
     border-radius: 10px;
     display: block;
 }
-
 .btn-grad:hover {
     background-position: right center; /* change the direction of the change here */
     color: #fff;
     text-decoration: none;
+}
+
+.btn--clicked {
+    content: "" !important;
+    transition: 0.6s cubic-bezier(0.01, 1.69, 0.99, 0.94);
+    padding: 15px 2px;
+    width: 50px;
+    color: transparent;
+    z-index: -10;
+}
+
+.color {
+    display: block;
+    width: 0;
+    height: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    transition: 0.8s ease;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.expanded {
+    width: 200vw;
+    padding-bottom: 200vw;
+    height: auto;
+}
+
+.color--blue {
+    background-color: #1b8bf9;
+    transition-delay: 0.25s;
+}
+
+.color--orange {
+    background-color: #ff6c19;
+    transition-delay: 0.5s;
+}
+
+.color--green {
+    background-color: #41ff9f;
+    transition-delay: 0.75s;
+}
+
+.color--white {
+    background-color: #f9f9f9;
+    transition-delay: 1s;
 }
