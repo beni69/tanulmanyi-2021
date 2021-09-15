@@ -1,4 +1,7 @@
-const button = document.querySelector(".btn-grad");
+let url = "/game/";
+
+// start button animation
+const button = document.querySelector("#start");
 button.addEventListener("click", e => {
     e.preventDefault();
     button.classList.add("btn--clicked");
@@ -6,16 +9,19 @@ button.addEventListener("click", e => {
         element.classList.add("expanded");
     });
 
-    // redirect and reset
-
+    // redirect
     setTimeout(() => {
-        button.classList.remove("btn--clicked");
-    }, 3500);
-    setTimeout(() => {
-        window.location.href = "/game/";
+        window.location.href = url;
+    }, 1500);
+});
 
-        document.querySelectorAll("span").forEach(element => {
-            element.classList.remove("expanded");
-        });
-    }, 1700);
+// debug mode
+document.addEventListener("keypress", e => {
+    const key = e.key;
+    console.log(key);
+
+    if (key === "D") {
+        url = "/game/?debug=true";
+        button.click();
+    }
 });

@@ -22,6 +22,8 @@ module.exports = {
     optimize: {
         bundle: true,
         minify: true,
+        treeshake: true,
         target: "es2018",
+        sourcemap: "external",
     },
 };

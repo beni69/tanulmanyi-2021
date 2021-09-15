@@ -1,9 +1,13 @@
 //* IMPORTS
 import kaboom from "kaboom";
-const k = kaboom();
+import { fpsCounter, isDebug } from "./helpers";
+
+const k = kaboom({ touchToMouse: true });
+
+if (isDebug()) fpsCounter(k);
 
 //* CONSTANTS
-const MOVE_SPEED = 480;
+const MOVE_SPEED = 320;
 
 //* LOADING ASSETS
 // load the default sprite "bean"
@@ -24,31 +28,13 @@ k.add([
 ]);
 
 //* CONTROLS
-k.keyPress("up", () => player.jump());
+k.keyPress("up", () => player.grounded() && player.jump());
 k.keyPress("space", () => player.jump());
 k.keyDown("right", () => player.move(MOVE_SPEED, 0));
 k.keyDown("left", () => player.move(-MOVE_SPEED, 0));
 k.keyPress("down", () => (player.weight = 3));
 k.keyRelease("down", () => (player.weight = 1));
+k.mouseDown(() => player.move(MOVE_SPEED, 0));
 
 // move input focus to the game
 k.focus();
-
-// gamer moment
-const fpsCounter = () => {
-    const fpsCounter = k.add([k.text("fps")]);
-
-    const times: number[] = [];
-    let fps: number;
-
-    k.render(() => {
-        const now = window.performance.now();
-        while (times.length > 0 && times[0] <= now - 1000) times.shift();
-
-        times.push(now);
-        fps = times.length;
-
-        fpsCounter.text = `fps: ${fps}`;
-    });
-};
-fpsCounter();
