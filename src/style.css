@@ -3,11 +3,19 @@
     padding: 0;
 }
 
+:root {
+    --pink: #fc354c;
+    --lblue: #0abfbc;
+    --dblue: #1b2845;
+    --yellow: #ffd046;
+    --bg: #141414;
+}
+
 body {
     font-family: "Press Start 2P", cursive;
 
     overflow: hidden;
-    background: #141414;
+    background: var(--bg);
 }
 
 main {
@@ -24,9 +32,9 @@ main {
 .btn-grad {
     background-image: linear-gradient(
         to right,
-        #fc354c 0%,
-        #0abfbc 51%,
-        #fc354c 100%
+        var(--pink) 0%,
+        var(--lblue) 51%,
+        var(--pink) 100%
     );
 
     margin: 10px;
@@ -36,13 +44,13 @@ main {
     transition: 0.5s;
     background-size: 200% auto;
     color: white;
-    box-shadow: 0 0 20px #0abfbc;
+    box-shadow: 0 0 20px var(--lblue);
     border-radius: 10px;
     display: block;
 }
 .btn-grad:hover {
     background-position: right center; /* change the direction of the change here */
-    color: #fff;
+    color: white;
     text-decoration: none;
 }
 
