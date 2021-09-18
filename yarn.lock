@@ -1940,10 +1940,10 @@ just-diff@^3.0.1:
   resolved "https://registry.yarnpkg.com/just-diff/-/just-diff-3.1.1.tgz#d50c597c6fd4776495308c63bdee1b6839082647"
   integrity sha512-sdMWKjRq8qWZEjDcVA6llnUT8RDEBIfOiGpYFPYa9u+2c39JCsejktSP7mj5eRid5EIvTzIpQ2kDOCw1Nq9BjQ==
 
-kaboom@^2000.0.0-beta.15:
-  version "2000.0.0-beta.15"
-  resolved "https://registry.yarnpkg.com/kaboom/-/kaboom-2000.0.0-beta.15.tgz#a619b892eee493945bb20aeedcd418c5bb080cdf"
-  integrity sha512-JVeEFWz73K5cH5hZvEzjD0Wu+H7Dd61BSaTJqPvYyPM6NVEgmtFCtxdmvW4dzsOGpExj1awqDf/C2ZOAcp86Sw==
+kaboom@^2000.0.0-beta.17:
+  version "2000.0.0-beta.17"
+  resolved "https://registry.yarnpkg.com/kaboom/-/kaboom-2000.0.0-beta.17.tgz#3d858ed2c3572dbf7e6a8cba686d6d3bda5da1f5"
+  integrity sha512-gFeZZT+TLnK28VZuZts40zzmBb3nVAqLxXGndPu+qvm1BY1fo8L0NLYm9507x+bMmXOxkUS11crsK0YivMCzjw==
 
 keyv@^4.0.0:
   version "4.0.3"

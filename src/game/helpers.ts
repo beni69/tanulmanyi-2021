@@ -1,5 +1,6 @@
-import type { KaboomCtx } from "kaboom";
-import type { control } from "./types";
+import type { KaboomCtx, Key } from "kaboom";
+import { MOVE_SPEEDS, STATE } from "./constants";
+import type { control, kbControl, mouseControl, player } from "./types";
 
 export const isDebug = () =>
     new URLSearchParams(window.location.search).get("debug") === "true";
@@ -7,10 +8,9 @@ export const isDebug = () =>
 // gamer moment
 export const fpsCounter = (k: KaboomCtx) => {
     const fpsCounter = k.add([
-        k.text("fps"),
+        k.text("fps", { size: 50 }),
         k.layer("ui"),
         k.fixed(),
-        k.stay(),
     ]);
 
     const times: number[] = [];
@@ -27,5 +27,16 @@ export const fpsCounter = (k: KaboomCtx) => {
     });
 };
 
-export const initControls = (ctrl: control[]) =>
-    ctrl.forEach(c => c.keys.forEach(key => c.fn(key, c.cb)));
+// kill me pls
+export const initControls = (ctrl: control[], p: player) =>
+    ctrl.forEach(c =>
+        (c as kbControl).keys?.length
+            ? (c as kbControl).fn((c as kbControl).keys as unknown as Key, () =>
+                  c.cb(p)
+              )
+            : (c as mouseControl).fn(() => c.cb(p))
+    );
+
+export const sleep = (n: number) => new Promise(res => setTimeout(res, n));
+
+export const resetSpeed = () => STATE.set("speed", MOVE_SPEEDS[0]);

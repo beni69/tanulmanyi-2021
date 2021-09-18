@@ -1,16 +1,16 @@
 {
     "name": "sp",
-    "version": "alpha-0.0.2",
+    "version": "1.0.0-alpha.3",
     "main": "index.js",
     "author": "beni69 <beni@karesz.xyz> (https://github.com/beni69)",
     "license": "MIT",
     "scripts": {
         "build": "snowpack build",
         "dev": "snowpack dev",
-        "start": "serve build"
+        "start": "serve -p 8080 build"
     },
     "dependencies": {
-        "kaboom": "^2000.0.0-beta.15"
+        "kaboom": "^2000.0.0-beta.17"
     },
     "devDependencies": {
         "@snowpack/plugin-postcss": "^1.4.3",

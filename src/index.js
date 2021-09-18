@@ -4,6 +4,8 @@ let url = "/game/";
 const button = document.querySelector("#start");
 button.addEventListener("click", e => {
     e.preventDefault();
+    button.innerHTML = "";
+
     button.classList.add("btn--clicked");
     document.querySelectorAll("span").forEach(element => {
         element.classList.add("expanded");

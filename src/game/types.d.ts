@@ -1,13 +1,24 @@
-import type { CompList, EventCanceller, Key, Vec2 } from "kaboom";
+import type {
+    AreaComp,
+    BodyComp,
+    EventCanceller,
+    GameObj,
+    Key,
+    LayerComp,
+    PosComp,
+    SpriteComp,
+} from "kaboom";
 
-interface control {
+type player = GameObj<SpriteComp | LayerComp | PosComp | AreaComp | BodyComp>;
+
+type control = kbControl | mouseControl;
+interface kbControl {
     keys: Key[];
     fn: (k: Key, cb: () => void) => EventCanceller;
-    cb: () => void;
+    cb: controlCB;
 }
-
-interface LevelConf {
-    width: number;
-    height: number;
-    pos?: Vec2;
+interface mouseControl {
+    fn: (cb: () => void) => EventCanceller;
+    cb: controlCB;
 }
+type controlCB = (p: player) => void;
