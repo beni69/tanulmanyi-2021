@@ -16,9 +16,11 @@ interface kbControl {
     keys: Key[];
     fn: (k: Key, cb: () => void) => EventCanceller;
     cb: controlCB;
+    dismissSign?: boolean;
 }
 interface mouseControl {
     fn: (cb: () => void) => EventCanceller;
     cb: controlCB;
+    dismissSign?: boolean;
 }
 type controlCB = (p: player) => void;

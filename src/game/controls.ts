@@ -9,15 +9,18 @@ export const BASE_CONTROLS: control[] = [
             keys: ["right", "d"],
             fn: k.keyDown,
             cb: p => p.move(speed(), 0),
+            dismissSign: true,
         },
         {
             keys: ["left", "a"],
             fn: k.keyDown,
             cb: p => p.move(-speed(), 0),
+            dismissSign: true,
         },
         {
             fn: k.mouseDown,
             cb: p => p.move(speed(), 0),
+            dismissSign: true,
         },
     ],
     PLAYER_CONTROLS: control[] = [
@@ -26,6 +29,7 @@ export const BASE_CONTROLS: control[] = [
             keys: ["up", "w", "space"],
             fn: k.keyPress,
             cb: p => p.grounded() && p.jump(),
+            dismissSign: true,
         },
 
         {

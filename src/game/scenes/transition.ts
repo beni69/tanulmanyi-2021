@@ -1,5 +1,6 @@
+import { MOVE_SPEEDS, STATE } from "../constants";
 import { BASE_CONTROLS } from "../controls";
-import { fpsCounter, initControls, isDebug, resetSpeed } from "../helpers";
+import { fpsCounter, initControls } from "../helpers";
 import k from "../kaboom";
 import { BASE_LVLCONF } from "../levels";
 
@@ -8,7 +9,7 @@ export const TransitionScene = (cb: () => any) => {
     console.log("transition");
 
     // reset speed
-    resetSpeed();
+    STATE.set("speed", MOVE_SPEEDS[0]);
 
     k.layers(["bg", "game", "player", "ui"], "game");
 
@@ -21,6 +22,7 @@ export const TransitionScene = (cb: () => any) => {
         ],
         {
             ...BASE_LVLCONF,
+            height: 32,
             "@": () => [
                 k.sprite("portal"),
                 k.area({}),
@@ -46,6 +48,6 @@ export const TransitionScene = (cb: () => any) => {
 
     bus.collides("portal", () => cb());
 
-    isDebug() && fpsCounter(k);
+    STATE.get("_debug") && fpsCounter(k);
 };
 export default TransitionScene;

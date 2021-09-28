@@ -10,7 +10,7 @@
         "start": "serve -p 8080 build"
     },
     "dependencies": {
-        "kaboom": "^2000.0.0-beta.17"
+        "kaboom": "^2000.0.0-beta.22"
     },
     "devDependencies": {
         "@snowpack/plugin-postcss": "^1.4.3",

@@ -1,10 +1,15 @@
+import { MOVE_SPEEDS, STATE } from "../constants";
 import { PLAYER_CONTROLS } from "../controls";
-import { fpsCounter, initControls, isDebug } from "../helpers";
+import { addDialog, fpsCounter, initControls, sleep } from "../helpers";
 import k from "../kaboom";
 import { BASE_LVLCONF, LEVELS } from "../levels";
 
 export const GameScene = ({ lvl }: { lvl: number }) => {
+    lvl ||= 0;
     console.log(`level ${lvl}`);
+
+    // reset speed
+    STATE.set("speed", MOVE_SPEEDS[0]);
 
     k.layers(["bg", "game", "player", "ui"], "game");
 
@@ -20,14 +25,23 @@ export const GameScene = ({ lvl }: { lvl: number }) => {
         k.pos(k.width() / 2, 0),
         k.area({}),
         k.body(),
+        "player",
     ]);
 
-    player.collides("bus", bus => {
-        k.go("transition", () => k.go("game", { lvl: ++lvl }));
-    });
+    // signs
+    const dialog = addDialog(k, player);
+    //@ts-ignore
+    STATE.get("_debug") && (globalThis.d = dialog);
+    console.log({ d: dialog });
 
-    // start listening for the controls
-    initControls(PLAYER_CONTROLS, player);
+    player.collides("sign", s => dialog.say(s.msg));
+
+    player.collides("bus", bus =>
+        k.go("transition", () => k.go("game", { lvl: ++lvl }))
+    );
+
+    // wait before listening for controls
+    sleep(500).then(() => initControls(PLAYER_CONTROLS, player, dialog));
 
     k.keyPress("enter", () => {
         k.burp();
@@ -37,6 +51,6 @@ export const GameScene = ({ lvl }: { lvl: number }) => {
     //* make the camera follow the player
     player.action(() => k.camPos(player.pos));
 
-    isDebug() && fpsCounter(k);
+    STATE.get("_debug") && fpsCounter(k);
 };
 export default GameScene;

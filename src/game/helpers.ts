@@ -1,5 +1,4 @@
 import type { KaboomCtx, Key } from "kaboom";
-import { MOVE_SPEEDS, STATE } from "./constants";
 import type { control, kbControl, mouseControl, player } from "./types";
 
 export const isDebug = () =>
@@ -28,15 +27,91 @@ export const fpsCounter = (k: KaboomCtx) => {
 };
 
 // kill me pls
-export const initControls = (ctrl: control[], p: player) =>
-    ctrl.forEach(c =>
-        (c as kbControl).keys?.length
-            ? (c as kbControl).fn((c as kbControl).keys as unknown as Key, () =>
-                  c.cb(p)
-              )
-            : (c as mouseControl).fn(() => c.cb(p))
-    );
+export const initControls = (ctrl: control[], p: player, d?: any) =>
+    ctrl.forEach(c => {
+        if ((c as kbControl).keys?.length) {
+            (c as kbControl).fn((c as kbControl).keys as unknown as Key, () =>
+                c.cb(p)
+            );
+            d &&
+                c.dismissSign &&
+                (c as kbControl).fn(
+                    (c as kbControl).keys as unknown as Key,
+                    () => d.dismiss()
+                );
+        } else {
+            (c as mouseControl).fn(() => c.cb(p));
+            d && c.dismissSign && (c as mouseControl).fn(() => d.dismiss());
+        }
+    });
 
 export const sleep = (n: number) => new Promise(res => setTimeout(res, n));
 
-export const resetSpeed = () => STATE.set("speed", MOVE_SPEEDS[0]);
+export const addDialog = (k: KaboomCtx, p: player) => {
+    let h = 160,
+        pad = 16,
+        bg = k.add([
+            k.pos(0, k.height() - h),
+            k.rect(k.width(), h),
+            k.color(0, 0, 0),
+            k.layer("ui"),
+            k.z(100),
+            k.fixed(),
+        ]),
+        txt = k.add([
+            k.text("", { width: k.width(), size: 42 }),
+            k.pos(0 + pad, k.height() - h + pad),
+            k.layer("ui"),
+            k.z(100),
+            k.fixed(),
+        ]),
+        canvas = document.createElement("canvas");
+
+    bg.hidden = true;
+    txt.hidden = true;
+    canvas.width = k.width();
+    canvas.height = k.height();
+
+    return {
+        say(t: string) {
+            txt.text = t;
+            bg.hidden = false;
+            txt.hidden = false;
+        },
+        dismiss() {
+            if (
+                !this.active() ||
+                k
+                    .get("sign")
+                    .map(s => p.isColliding(s))
+                    .includes(true)
+            )
+                return;
+            txt.text = "";
+            bg.hidden = true;
+            txt.hidden = true;
+        },
+        active() {
+            return !bg.hidden;
+        },
+        destroy() {
+            bg.destroy();
+            txt.destroy();
+        },
+        bg,
+        txt,
+    };
+};
+
+export const levelSelect = (k: KaboomCtx) => {
+    return (n: string | number, ...args: any[]) =>
+        typeof n === "string" ? k.go(n, ...args) : k.go("game", { lvl: n });
+};
+
+export const loadSprites = (k: KaboomCtx, arr: string[][]) =>
+    arr.forEach((ar, i) =>
+        ar.forEach((a, j) => {
+            console.log(`loading ${i}-${j}: ${a}`);
+            k.loadSprite(`${i}-${j}`, a);
+        })
+    );
