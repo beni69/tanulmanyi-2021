@@ -2,25 +2,23 @@
 import { STATE } from "./constants";
 import { levelSelect, loadSprites, sleep } from "./helpers";
 import k from "./kaboom";
+import { IMAGES } from "./levels";
 import GameScene from "./scenes/game";
 import TransitionScene from "./scenes/transition";
 
 //* LOADING ASSETS
 k.loadBean();
-// k.loadCP437();
 k.loadFont("cp437", "fonts/CP437_9x16.png", 9, 16, {
-    chars: " ☺☻♥♦♣♠•◘○◙♂♀♪♫☼►◄↕‼¶§▬↨↑↓→←∟↔▲▼ !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~⌂ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒáíóúñÑªº¿⌐¬½¼¡«»░▒▓│┤╡╢╖╕╣║╗╝╜╛┐└┴┬├─┼╞╟╚╔╩╦╠═╬╧╨╤╥╙╘╒╓╫╪┘┌█▄▌▐▀αßΓπΣσµτΦΘΩδ∞φε∩≡±≥≤⌠⌡÷≈°∙·√ⁿ²■",
+    chars: k.CP437_CHARS,
 });
+
+loadSprites(k, IMAGES);
+k.loadSprite("bg-1", "/game/images/bg-1.png");
 
 k.loadRoot("https://i.imgur.com/");
 k.loadSprite("bus", "4TiAbx1.png");
 k.loadSprite("portal", "9airF23.png");
 k.loadSprite("sign", "KY971lm.png");
-
-loadSprites(k, [
-    [],
-    ["EHMl2b1.jpg", "l92VXsY.jpg", "O7lnO8X.jpg", "dOMFU7B.jpg", "47J8aDD.jpg"],
-]);
 
 //* SCENES
 k.scene("game", GameScene);

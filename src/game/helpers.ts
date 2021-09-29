@@ -112,6 +112,6 @@ export const loadSprites = (k: KaboomCtx, arr: string[][]) =>
     arr.forEach((ar, i) =>
         ar.forEach((a, j) => {
             console.log(`loading ${i}-${j}: ${a}`);
-            k.loadSprite(`${i}-${j}`, a);
+            k.loadSprite(`${i}-${j}`, `/game/images/${a}`);
         })
     );

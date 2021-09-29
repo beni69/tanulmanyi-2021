@@ -5,6 +5,7 @@ import type {
     GameObj,
     Key,
     LayerComp,
+    LevelConf,
     PosComp,
     SpriteComp,
 } from "kaboom";
@@ -24,3 +25,7 @@ interface mouseControl {
     dismissSign?: boolean;
 }
 type controlCB = (p: player) => void;
+
+interface LvlConf extends LevelConf {
+    background: string;
+}

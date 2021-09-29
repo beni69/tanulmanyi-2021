@@ -1,5 +1,6 @@
 import type { LevelConf } from "kaboom";
 import k from "./kaboom";
+import type { LvlConf } from "./types";
 
 const any = (n: number) => (ch: string) => {
     // number = picture, letter = sign
@@ -47,9 +48,86 @@ export const LEVELS: [string[], any][] = [
                 any: any(1),
             },
         ],
+        [
+            [
+                "            0    1    2    3    4            ",
+                "                                             ",
+                "             A    B    C    D             @  ",
+                "=============================================",
+            ],
+            {
+                any: any(2),
+            },
+        ],
+        [
+            [
+                "            0    1    2    3                 ",
+                "                                             ",
+                "             A    B    C    D             @  ",
+                "=============================================",
+            ],
+            {
+                any: any(3),
+            },
+        ],
+        [
+            [
+                "            0    1    2    3    4    5       ",
+                "                                             ",
+                "             A    B    C                  @  ",
+                "=============================================",
+            ],
+            {
+                any: any(4),
+            },
+        ],
+        [
+            [
+                "            0    1    2    3    4            ",
+                "                                             ",
+                "             A    B    C                  @  ",
+                "=============================================",
+            ],
+            {
+                any: any(5),
+            },
+        ],
+        [
+            [
+                "            0    1    2                      ",
+                "                                             ",
+                "             A    B    C                  @  ",
+                "=============================================",
+            ],
+            {
+                any: any(6),
+            },
+        ],
+        [
+            [
+                "            0    1    2    3                 ",
+                "                                             ",
+                "             A    B                       @  ",
+                "=============================================",
+            ],
+            {
+                any: any(7),
+            },
+        ],
+        [
+            [
+                "            0    1    2    3    4            ",
+                "                                             ",
+                "             A    B    C    D    E        @  ",
+                "=============================================",
+            ],
+            {
+                any: any(8),
+            },
+        ],
         [[], {}],
     ],
-    BASE_LVLCONF: LevelConf = {
+    BASE_LVLCONF: LvlConf = {
         width: 128,
         height: 16,
         "=": () => [
@@ -67,7 +145,8 @@ export const LEVELS: [string[], any][] = [
             k.origin("bot"),
             "bus",
         ],
-    } as unknown as LevelConf,
+        background: "bg-1",
+    } as unknown as LvlConf,
     TEXTS: Array<{ [index: string]: string }> = [
         {},
         {
@@ -97,7 +176,11 @@ export const LEVELS: [string[], any][] = [
             B: "A várból a kilátás csodálatos volt és a kis fa erődítmény szerintem sokunk szívét elnyerte.",
             C: "A vár a tatárjárás idején épült és nagyjából ötször nevezték át az 130-as évek első felében.",
         },
-        {},
+        {
+            A: "Sárospatakon egy kiadós ebéd után megnéztük a Református Kollégium Könyvtárát, amely több ezer régebbnél régebbi könyvvel rendelkezik.",
+            B: " Egyik legjobban megmaradt könyvük 1629-ben íródott.",
+            C: "Egy csodálatos könyvtár volt és egy kihagyhatatlan élmény.",
+        },
         {
             A: "Széphalom falujából sem láttunk túl sokat, viszont a magyar nyelvújító, Kazinczy Ferenc régi birtokat vagy a mai, Magyar Nyelv Múzeumát megnéztük.",
             B: "Nagyon modern volt az épület és végképp nagyon informatív előadást hallgathattunk végig mind Kazinczy életéről, min a magyar nyelv történetéről.",
@@ -120,4 +203,46 @@ export const LEVELS: [string[], any][] = [
             C: "Miskolctapolcára meg főképpen a bob miatt mentünk.",
             D: "Mindenki három kört mehetett és meg vagyok győződve arról, hogy az osztály többségének ez a program tetszett a legjobban.",
         },
+    ],
+    IMAGES: string[][] = [
+        [],
+        [
+            "DSC_0820.jpg",
+            "DSC_0821.jpg",
+            "DSC_0809.jpg",
+            "DSC_0879.jpg",
+            "DSC_0831.jpg",
+        ],
+        [
+            "20210908_133754.jpg",
+            "20210908_140931.jpg",
+            "20210908_145632.jpg",
+            "20210908_144452.jpg",
+            "20210908_154207.jpg",
+        ],
+        ["DSC_0935.jpg", "DSC_0922.jpg", "DSC_0933.jpg", "DSC_0960.jpg"],
+        [
+            "DSC_0074.jpg",
+            "DSC_0029.jpg",
+            "DSC_0049.jpg",
+            "DSC_0094.jpg",
+            "DSC_0113.jpg",
+            "DSC_0144.jpg",
+        ],
+        [
+            "hihi-4.jpg",
+            "hihi-2 (1).jpg",
+            "hihi-7.jpg",
+            "DSC_0151.jpg",
+            "DSC_0155.jpg",
+        ],
+        ["DSC_0360.jpg", "DSC_0310.jpg", "DSC_0323.jpg"],
+        ["DSC_0419.jpg", "DSC_0444.jpg", "DSC_0399.jpg", "DSC_0400.jpg"],
+        [
+            "DSC_0591.jpg",
+            "DSC_0608.jpg",
+            "DSC_0656.jpg",
+            "DSC_0632.jpg",
+            "DSC_0628.jpg",
+        ],
     ];

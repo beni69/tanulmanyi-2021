@@ -31,7 +31,6 @@ export const BASE_CONTROLS: control[] = [
             cb: p => p.grounded() && p.jump(),
             dismissSign: true,
         },
-
         {
             keys: ["down", "s"],
             fn: k.keyPress,

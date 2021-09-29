@@ -13,10 +13,20 @@ export const GameScene = ({ lvl }: { lvl: number }) => {
 
     k.layers(["bg", "game", "player", "ui"], "game");
 
-    const level = k.addLevel(LEVELS[lvl][0], {
+    const LEVEL = {
         ...BASE_LVLCONF,
         ...LEVELS[lvl][1],
-    });
+    };
+
+    const level = k.addLevel(LEVELS[lvl][0], LEVEL);
+
+    // k.add([
+    //     k.sprite("bg-1"),
+    //     k.scale(k.width() / 240, k.height() / 240),
+    //     k.origin("topleft"),
+    //     k.layer("bg"),
+    //     k.fixed(),
+    // ]);
 
     // create player
     const player = k.add([
