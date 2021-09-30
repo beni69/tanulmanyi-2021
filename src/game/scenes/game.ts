@@ -1,3 +1,4 @@
+import type { LvlConf } from "game/types";
 import { MOVE_SPEEDS, STATE } from "../constants";
 import { PLAYER_CONTROLS } from "../controls";
 import { addDialog, fpsCounter, initControls, sleep } from "../helpers";
@@ -13,20 +14,23 @@ export const GameScene = ({ lvl }: { lvl: number }) => {
 
     k.layers(["bg", "game", "player", "ui"], "game");
 
-    const LEVEL = {
+    const LEVEL: LvlConf = {
         ...BASE_LVLCONF,
         ...LEVELS[lvl][1],
     };
 
     const level = k.addLevel(LEVELS[lvl][0], LEVEL);
 
-    // k.add([
-    //     k.sprite("bg-1"),
-    //     k.scale(k.width() / 240, k.height() / 240),
-    //     k.origin("topleft"),
-    //     k.layer("bg"),
-    //     k.fixed(),
-    // ]);
+    k.add([
+        k.sprite(LEVEL.background.name),
+        k.scale(
+            k.width() / LEVEL.background.width,
+            k.height() / LEVEL.background.height
+        ),
+        k.origin("topleft"),
+        k.layer("bg"),
+        k.fixed(),
+    ]);
 
     // create player
     const player = k.add([

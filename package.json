@@ -1,6 +1,6 @@
 {
     "name": "sp",
-    "version": "1.0.0-alpha.3",
+    "version": "1.0.0-beta.1",
     "main": "index.js",
     "author": "beni69 <beni@karesz.xyz> (https://github.com/beni69)",
     "license": "MIT",

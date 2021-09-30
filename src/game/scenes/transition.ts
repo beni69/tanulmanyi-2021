@@ -33,6 +33,17 @@ export const TransitionScene = (cb: () => any) => {
         }
     );
 
+    k.add([
+        k.sprite(BASE_LVLCONF.background.name),
+        k.scale(
+            k.width() / BASE_LVLCONF.background.width,
+            k.height() / BASE_LVLCONF.background.height
+        ),
+        k.origin("topleft"),
+        k.layer("bg"),
+        k.fixed(),
+    ]);
+
     const bus = k.add([
         k.sprite("bus", { flipX: true }),
         k.layer("player"),

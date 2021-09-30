@@ -57,6 +57,7 @@ export const LEVELS: [string[], any][] = [
             ],
             {
                 any: any(2),
+                background: { name: "bg-2", width: 1024, height: 680 },
             },
         ],
         [
@@ -125,7 +126,39 @@ export const LEVELS: [string[], any][] = [
                 any: any(8),
             },
         ],
-        [[], {}],
+        [
+            [
+                "            0    1    2                      ",
+                "                                             ",
+                "             A    B    C                  @  ",
+                "=============================================",
+            ],
+            {
+                any: any(9),
+            },
+        ],
+        [
+            [
+                "                 0                           ",
+                "                                             ",
+                "             A  B  C  D             @        ",
+                "=============================================",
+            ],
+            {
+                any: any(10),
+            },
+        ],
+        [
+            [
+                "              0                              ",
+                "                                             ",
+                "             A  B                            ",
+                "=============================================",
+            ],
+            {
+                any: any(11),
+            },
+        ],
     ],
     BASE_LVLCONF: LvlConf = {
         width: 128,
@@ -145,7 +178,7 @@ export const LEVELS: [string[], any][] = [
             k.origin("bot"),
             "bus",
         ],
-        background: "bg-1",
+        background: { name: "bg-1", width: 1280, height: 640 },
     } as unknown as LvlConf,
     TEXTS: Array<{ [index: string]: string }> = [
         {},
@@ -203,6 +236,10 @@ export const LEVELS: [string[], any][] = [
             C: "Miskolctapolcára meg főképpen a bob miatt mentünk.",
             D: "Mindenki három kört mehetett és meg vagyok győződve arról, hogy az osztály többségének ez a program tetszett a legjobban.",
         },
+        {
+            A: "Köszönjük a figyelmet!",
+            B: "Készítették: Vánky Laura és Varga Benedek",
+        },
     ],
     IMAGES: string[][] = [
         [],
@@ -245,4 +282,7 @@ export const LEVELS: [string[], any][] = [
             "DSC_0632.jpg",
             "DSC_0628.jpg",
         ],
+        ["20210910_155946.jpg", "20210910_155847.jpg", "20210910_155928.jpg"],
+        ["1631291205956.jpg"],
+        ["DSC_1030.jpg"],
     ];

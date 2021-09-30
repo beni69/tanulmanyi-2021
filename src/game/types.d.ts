@@ -27,5 +27,5 @@ interface mouseControl {
 type controlCB = (p: player) => void;
 
 interface LvlConf extends LevelConf {
-    background: string;
+    background: { name: string; width: number; height: number };
 }
