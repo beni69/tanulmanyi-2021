@@ -32,7 +32,7 @@ export const LEVELS: [string[], any][] = [
             {
                 // any: any(0),
                 height: 64,
-                "1": () => [k.text("helloó!", { font: "cp437" })],
+                "1": () => [k.text("helloó!")],
                 "2": () => [k.text("mozogj a nyilakkal"), k.scale(0.75)],
                 "3": () => [k.text("vagy kattints"), k.scale(0.7)],
                 "4": () => [k.text("erre ->"), k.scale(0.9)],
