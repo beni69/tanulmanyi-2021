@@ -1,9 +1,9 @@
-import type { LvlConf } from "game/types";
 import { MOVE_SPEEDS, STATE } from "../constants";
 import { PLAYER_CONTROLS } from "../controls";
 import { addDialog, fpsCounter, initControls, sleep } from "../helpers";
 import k from "../kaboom";
 import { BASE_LVLCONF, LEVELS } from "../levels";
+import type { LvlConf, Sign } from "../types";
 
 export const GameScene = ({ lvl }: { lvl: number }) => {
     lvl ||= 0;
@@ -31,6 +31,8 @@ export const GameScene = ({ lvl }: { lvl: number }) => {
         k.layer("bg"),
         k.fixed(),
     ]);
+
+    k.get("sign").forEach(s => (s as Sign).pushOutAll());
 
     // create player
     const player = k.add([

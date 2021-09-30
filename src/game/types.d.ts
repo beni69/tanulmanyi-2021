@@ -1,12 +1,15 @@
 import type {
     AreaComp,
     BodyComp,
+    Character,
     EventCanceller,
     GameObj,
     Key,
     LayerComp,
     LevelConf,
+    OriginComp,
     PosComp,
+    ScaleComp,
     SpriteComp,
 } from "kaboom";
 
@@ -29,3 +32,13 @@ type controlCB = (p: player) => void;
 interface LvlConf extends LevelConf {
     background: { name: string; width: number; height: number };
 }
+
+type Sign = Character<
+    | SpriteComp
+    | AreaComp
+    | ScaleComp
+    | OriginComp
+    | {
+          msg: string;
+      }
+>;

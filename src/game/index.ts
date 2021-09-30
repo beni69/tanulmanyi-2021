@@ -14,12 +14,12 @@ k.loadFont("cp437", "fonts/CP437_9x16.png", 9, 16, {
 
 loadSprites(k, IMAGES);
 k.loadSprite("bg-1", "/game/images/bg-1.png");
-k.loadSprite("bg-2", "/game/images/bg-2.jpg");
+k.loadSprite("bg-2", "/game/images/bg-2.png");
+k.loadSprite("sign", "/game/images/sign.png");
 
 k.loadRoot("https://i.imgur.com/");
 k.loadSprite("bus", "4TiAbx1.png");
 k.loadSprite("portal", "9airF23.png");
-k.loadSprite("sign", "KY971lm.png");
 
 //* SCENES
 k.scene("game", GameScene);

@@ -59,18 +59,15 @@ export const addDialog = (k: KaboomCtx, p: player) => {
             k.fixed(),
         ]),
         txt = k.add([
-            k.text("", { width: k.width(), size: 42 }),
+            k.text("", { width: k.width(), size: 42, font: "cp437" }),
             k.pos(0 + pad, k.height() - h + pad),
             k.layer("ui"),
             k.z(100),
             k.fixed(),
-        ]),
-        canvas = document.createElement("canvas");
+        ]);
 
     bg.hidden = true;
     txt.hidden = true;
-    canvas.width = k.width();
-    canvas.height = k.height();
 
     return {
         say(t: string) {
